@@ -6,7 +6,7 @@ ENV YCSB_VERSION=0.11.0 \
     PATH=${PATH}:/usr/bin
 
 RUN cd /opt \
-    && curl -Ls https://github.com/brianfrankcooper/YCSB/releases/download/${YCSB_VERSION}/ycsb-${YCSB_VERSION}.tar.gz \
+    && curl -Ls https://github.com/brianfrankcooper/YCSB/releases/download/${YCSB_VERSION}/ycsb-${YCSB_VERSION}.tar.gz > ycsb-${YCSB_VERSION}.tar.gz \
     && tar -xzvf *.tar.gz \
     && rm -fr *.tar.gz
 
