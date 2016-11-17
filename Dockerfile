@@ -10,6 +10,7 @@ RUN cd /opt \
     && tar -xzvf *.tar.gz \
     && rm -fr *.tar.gz
 
+
 WORKDIR ${YCSB}
 
 ENTRYPOINT ["./bin/ycsb"]
