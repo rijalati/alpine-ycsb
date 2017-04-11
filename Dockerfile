@@ -1,7 +1,7 @@
 FROM rijalati/alpine-zulu-jdk8:8u112
 MAINTAINER ritchie@selectstar.io
 
-ENV YCSB_VERSION=0.11.0 \
+ENV YCSB_VERSION=0.12.0 \
     YCSB=/opt/ycsb-${YCSB_VERSION} \
     PATH=${PATH}:/usr/bin
 
