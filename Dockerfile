@@ -1,4 +1,4 @@
-FROM rijalati/alpine-zulu-jdk8:8u112
+FROM rijalati/alpine-zulu-jdk8:latest
 MAINTAINER ritchie@selectstar.io
 
 ENV YCSB_VERSION=0.12.0 \
