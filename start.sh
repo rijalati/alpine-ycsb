@@ -63,10 +63,9 @@ function config_workloads
 
 function load_data
 {
-    if [[ ! -e /.loadedath</groupId>
-<artifactId>commons-j ]]; then
+    if [[ ! -e /.loaded_data ]]; then
 
-        /opt/ycsb-*/bin/ycsb.sh load ${target} -s -P workloads/workload${workload}
+        /opt/ycsb-*/bin/ycsb.sh load ${target} -s -P workloads/workload${workload} && touch /.loaded_data
     fi
 
     return
