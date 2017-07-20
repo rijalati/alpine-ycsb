@@ -7,6 +7,17 @@ function config_workloads
         /opt/ycsb-*/workloads/workload*
     sed -i "s/operationcount=1000/operationcount=${ops:=5000000}/g" \
         /opt/ycsb-*/workloads/workload*
+        
+    return
+}
+
+function load_data
+{
+    if [[ ! -e /.loaded_data ]]; then
+
+        /opt/ycsb-*/bin/ycsb.sh load ${target} -s -P workloads/workload${workload} && touch /.loaded_data
+    fi
+
     return
 }
 
