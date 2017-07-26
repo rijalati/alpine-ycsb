@@ -1,5 +1,7 @@
 #!/bin/mksh
 
+set -vex
+
 # maor load
 function config_workloads
 {
@@ -31,7 +33,7 @@ if [[ -z ${DBTYPE} || -z ${WORKLETTER} || -z ${DBARGS} ]]; then
 else
   config_workloads
   if [[ ! -z "${ACTION}" ]]; then
-    ./bin/ycsb "${ACTION}" "${DBTYPE}" -s -P "workloads/workload${WORKLETTER}" "${DBARGS}"
+    eval ./bin/ycsb "${ACTION}" "${DBTYPE}" -s -P "workloads/workload${WORKLETTER}" "${DBARGS}"
   else
     load_data
     eval ./bin/ycsb run "${DBTYPE}" -s -P "workloads/workload${WORKLETTER}" "${DBARGS}"
