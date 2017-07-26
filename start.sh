@@ -35,4 +35,5 @@ else
   else
     load_data
     ./bin/ycsb "run ${DBTYPE} -s -P workloads/workload${WORKLETTER} ${DBARGS}"
+  fi
 fi
