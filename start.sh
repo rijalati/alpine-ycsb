@@ -3,9 +3,9 @@
 # maor load
 function config_workloads
 {
-    sed -i "s/recordcount=1000/recordcount=${records:=1000000}/g" \
+    sed -i "s/recordcount=[0-9]*/recordcount=${RECNUM:=1000000}/g" \
         /opt/ycsb-*/workloads/workload*
-    sed -i "s/operationcount=1000/operationcount=${ops:=5000000}/g" \
+    sed -i "s/operationcount=[0-9]*/operationcount=${OPNUM:=5000000}/g" \
         /opt/ycsb-*/workloads/workload*
         
     return
@@ -25,10 +25,14 @@ function load_data
 trap 'echo "\n${progname} has finished\n"' EXIT
 
 # make sure all the params are set and go.
-if [[ -z ${ACTION} || -z ${DBTYPE} || -z ${WORKLETTER} || -z ${DBARGS} ]]; then
+if [[ -z ${DBTYPE} || -z ${WORKLETTER} || -z ${DBARGS} ]]; then
   echo "Missing params! Exiting"
   exit 1
 else
   config_workloads
-  ./bin/ycsb "${ACTION} ${DBTYPE} -s -P workloads/workload${WORKLETTER} ${DBARGS}"
+  if [[ ! -z "${ACTION}" ]]; then
+    ./bin/ycsb "${ACTION} ${DBTYPE} -s -P workloads/workload${WORKLETTER} ${DBARGS}"
+  else
+    load_data
+    ./bin/ycsb "run ${DBTYPE} -s -P workloads/workload${WORKLETTER} ${DBARGS}"
 fi
