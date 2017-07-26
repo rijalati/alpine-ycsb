@@ -26,6 +26,9 @@ function load_data
 # exit message
 trap 'echo "\n${progname} has finished\n"' EXIT
 
+# make it easier to see logs in the rancher ui
+sleep 5
+
 # make sure all the params are set and go.
 if [[ -z ${DBTYPE} || -z ${WORKLETTER} || -z ${DBARGS} ]]; then
   echo "Missing params! Exiting"
