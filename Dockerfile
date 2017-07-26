@@ -12,7 +12,7 @@ RUN apk --update --no-cache add python mksh \
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-ENV ACTION='' DBTYPE='' WORKLETTER='' DBARGS=''
+ENV ACTION='' DBTYPE='' WORKLETTER='' DBARGS='' RECNUM='' OPNUM=''
 
 WORKDIR "/opt/ycsb-${YCSB_VERSION}"
 
