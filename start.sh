@@ -15,7 +15,7 @@ function load_data
 {
     if [[ ! -e /.loaded_data ]]; then
 
-        /opt/ycsb-*/bin/ycsb.sh load ${target} -s -P workloads/workload${workload} && touch /.loaded_data
+        /opt/ycsb-*/bin/ycsb.sh load "${DBTYPE} -s -P workloads/workload${WORKLETTER} ${DBARGS}" && touch /.loaded_data
     fi
 
     return
@@ -25,10 +25,10 @@ function load_data
 trap 'echo "\n${progname} has finished\n"' EXIT
 
 # make sure all the params are set and go.
-if [[ -z ${ACTION} && -z ${DBTYPE} && -z ${WORKLETTER} && -z ${DBARGS} ]]; then
+if [[ -z ${ACTION} || -z ${DBTYPE} || -z ${WORKLETTER} || -z ${DBARGS} ]]; then
   echo "Missing params! Exiting"
   exit 1
 else
   config_workloads
-  ./bin/ycsb "${ACTION}" "${DBTYPE}" "-s -P workloads/workload${WORKLETTER}" "${DBARGS}"
+  ./bin/ycsb "${ACTION} ${DBTYPE} -s -P workloads/workload${WORKLETTER} ${DBARGS}"
 fi
