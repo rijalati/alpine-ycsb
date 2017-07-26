@@ -15,7 +15,7 @@ function load_data
 {
     if [[ ! -e /.loaded_data ]]; then
 
-        /opt/ycsb-*/bin/ycsb.sh load "${DBTYPE} -s -P workloads/workload${WORKLETTER} ${DBARGS}" && touch /.loaded_data
+        /opt/ycsb-*/bin/ycsb.sh load "${DBTYPE}" -s -P "workloads/workload${WORKLETTER}" "${DBARGS}" && touch /.loaded_data
     fi
 
     return
@@ -31,9 +31,9 @@ if [[ -z ${DBTYPE} || -z ${WORKLETTER} || -z ${DBARGS} ]]; then
 else
   config_workloads
   if [[ ! -z "${ACTION}" ]]; then
-    ./bin/ycsb "${ACTION} ${DBTYPE} -s -P workloads/workload${WORKLETTER} ${DBARGS}"
+    ./bin/ycsb "${ACTION}" "${DBTYPE}" -s -P "workloads/workload${WORKLETTER}" "${DBARGS}"
   else
     load_data
-    ./bin/ycsb "run ${DBTYPE} -s -P workloads/workload${WORKLETTER} ${DBARGS}"
+    eval ./bin/ycsb run "${DBTYPE}" -s -P "workloads/workload${WORKLETTER}" "${DBARGS}"
   fi
 fi
