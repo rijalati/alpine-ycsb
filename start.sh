@@ -30,5 +30,5 @@ if [[ -z ${ACTION} && -z ${DBTYPE} && -z ${WORKLETTER} && -z ${DBARGS} ]]; then
   exit 1
 else
   config_workloads
-  ./bin/ycsb ${ACTION} ${DBTYPE} -P workloads/workload${WORKLETTER} ${DBARGS}
+  ./bin/ycsb "${ACTION}" "${DBTYPE}" "-P workloads/workload${WORKLETTER}" "${DBARGS}"
 fi
