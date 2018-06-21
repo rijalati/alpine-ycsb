@@ -10,7 +10,7 @@ docker run -t --name ycsb-loadgen \
 -e DBTYPE='redis' \
 -e WORKLETTER='a' \
 -e DBARGS='-p redis.host=10.0.0.1' \
-alpine-zulu-ycsb
+rijalati/alpine-ycsb:latest
 ```
 
 You need to pass these four environment variables:
