@@ -1,7 +1,7 @@
 FROM rijalati/alpine-zulu-jdk8:latest-mini
 MAINTAINER ritchie@selectstar.io
 
-ENV YCSB_VERSION=0.14.0 \
+ENV YCSB_VERSION=0.17.0 \
     PATH=${PATH}:/usr/bin
 
 RUN apk --update --no-cache add python mksh \
